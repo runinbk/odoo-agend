@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Materias -->
+        <record id="materia_matematicas" model="colegio.materia">
+            <field name="nombre">Matemáticas Básicas</field>
+            <field name="descripcion">Curso introductorio a matemáticas</field>
+        </record>
+        <record id="materia_literatura" model="colegio.materia">
+            <field name="nombre">Literatura Clásica</field>
+            <field name="descripcion">Estudio de autores clásicos</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Notificaciones -->
+        <record id="notificacion_inicio_clases" model="colegio.notificacion">
+            <field name="titulo">Inicio de Clases</field>
+            <field name="mensaje">Se informa que el inicio de clases será el 1 de marzo.</field>
+            <field name="fecha">2024-03-01</field>
+            <field name="creado_por" ref="agenda.admin_administrativo"/>
+            <field name="tipo_destinatario">curso</field>
+            <field name="curso_id" ref="agenda.curso_primero_secundaria"/>
+        </record>
+        
+    </data>
+</odoo>

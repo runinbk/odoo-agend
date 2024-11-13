@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Tutores -->
+        <record id="tutor_demo_1" model="colegio.tutor">
+            <field name="parentesco">Padre</field>
+            <field name="user_id" ref="agenda.user_demo_5"/>
+        </record>
+
+        <record id="tutor_demo_2" model="colegio.tutor">
+            <field name="parentesco">Madre</field>
+            <field name="user_id" ref="agenda.user_demo_6"/>
+        </record>
+    </data>
+</odoo>

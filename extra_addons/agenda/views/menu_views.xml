@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menú principal -->
+    <menuitem id="menu_colegio_root" name="Gestión Académica" sequence="10"/>
+
+    <!-- Submenú de configuración de entidad principal -->
+    <menuitem id="menu_colegio_administracion" name="Administración" parent="menu_colegio_root"/>
+    <menuitem id="menu_colegio_gestion" name="Gestión" parent="menu_colegio_root"/>
+    <menuitem id="menu_colegio_usuarios" name="Usuarios" parent="menu_colegio_root"/>
+    <menuitem id="menu_colegio_comunicados" name="Comunicados" parent="menu_colegio_root"/>
+
+    <!-- Entradas del menú de Inscripción y Asignación -->
+    <menuitem id="menu_asignaciones" name="Asignaciones" parent="menu_colegio_administracion" action="action_asignacion"/>
+
+    <!-- Menús para otros modelos -->
+    <menuitem id="menu_tutores" name="Tutores" parent="menu_colegio_usuarios" action="action_tutor"/>
+    <menuitem id="menu_alumnos" name="Alumnos" parent="menu_colegio_usuarios" action="action_alumno"/>
+    <menuitem id="menu_profesores" name="Profesores" parent="menu_colegio_usuarios" action="action_profesor"/>
+    <menuitem id="menu_administrativos" name="Administrativos" parent="menu_colegio_usuarios" action="action_administrativo"/>
+    <menuitem id="menu_cursos" name="Cursos" parent="menu_colegio_gestion" action="action_curso"/>
+    <menuitem id="menu_materias" name="Materias" parent="menu_colegio_gestion" action="action_materia"/>
+    <menuitem id="menu_gestion" name="Gestión" parent="menu_colegio_gestion" action="action_gestion"/>
+    <menuitem id="menu_comunicados" name="Comunicados" parent="menu_colegio_comunicados" action="action_notificacion"/>
+</odoo>

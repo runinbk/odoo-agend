@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista Formulario para Notificación -->
+        <record id="view_notificacion_form" model="ir.ui.view">
+            <field name="name">notificacion.form</field>
+            <field name="model">colegio.notificacion</field>
+            <field name="arch" type="xml">
+                <form string="Notificación">
+                    <sheet>
+                        <group>
+                            <field name="titulo"/>
+                            <field name="mensaje" widget="html"/>  <!-- Texto enriquecido -->
+                            <field name="fecha"/>
+                            <field name="attachment_ids" widget="many2many_binary" context="{'create': True}" /> <!-- Campo de adjuntos -->
+                            <field name="creado_por" readonly="1"/>
+                            <field name="tipo_destinatario" widget="radio"/>
+                            <div invisible="tipo_destinatario != 'curso'">
+                                <label for="curso_id">Seleccionar curso:</label>
+                                <field name="curso_id" string="Enviar a Curso" options="{'no_create': True}"  context="{'create': False}"/>
+                            </div>
+
+                            <div invisible="tipo_destinatario != 'especifico'">
+                                <label for="user_ids">Seleccionar usuarios:</label>
+                                <field name="user_ids" widget="many2many_tags"/>
+                            </div>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Lista para Notificación -->
+        <record id="view_notificacion_tree" model="ir.ui.view">
+            <field name="name">notificacion.list</field>
+            <field name="model">colegio.notificacion</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Notificación">
+                    <field name="titulo"/>
+                    <field name="fecha"/>
+                    <field name="creado_por" readonly="1"/>
+                    <field name="tipo_destinatario"/>
+                    <button name="action_view_lecturas" type="object" string="Ver Lecturas" class="oe_highlight"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_lectura_tree" model="ir.ui.view">
+            <field name="name">lectura.list</field>
+            <field name="model">colegio.lectura</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Lecturas de Notificación">
+                    <field name="user_id" string="Usuario"/>
+                    <field name="estado" string="Estado"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para Notificación -->
+        <record id="action_notificacion" model="ir.actions.act_window">
+            <field name="name">Notificaciones</field>
+            <field name="res_model">colegio.notificacion</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Acción para mostrar las lecturas asociadas a una notificación -->
+        <record id="action_view_lecturas" model="ir.actions.act_window">
+            <field name="name">Lecturas de Notificación</field>
+            <field name="res_model">colegio.lectura</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('notificacion_id', '=', active_id)]</field>
+            <field name="context">{'default_notificacion_id': active_id}</field>
+        </record>
+    </data>
+</odoo>

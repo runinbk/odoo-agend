@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Profesores -->
+        <record id="profesor_1" model="colegio.profesor">
+            <field name="especialidad">Matemáticas</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
+        <record id="profesor_2" model="colegio.profesor">
+            <field name="especialidad">Lengua</field>
+            <field name="user_id" ref="agenda.user_demo_2"/>
+        </record>
+    </data>
+</odoo>

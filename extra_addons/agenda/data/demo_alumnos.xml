@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Alumnos -->
+        <record id="alumno_1" model="colegio.alumno">
+            <field name='grado' ref='curso_primero_secundaria'/> 
+            <field name='edad'>7</field>
+            <field name="user_id" ref="agenda.user_demo_3"/>
+            <field name="tutor_id" ref="agenda.tutor_demo_1"/>
+        </record>
+        <record id="alumno_2" model="colegio.alumno">
+            <field name='grado' ref='curso_primero_secundaria'/> 
+            <field name='edad'>7</field>
+            <field name="user_id" ref="agenda.user_demo_4"/>
+            <field name="tutor_id" ref="agenda.tutor_demo_2"/>
+        </record>
+    </data>
+</odoo>
