@@ -26,16 +26,37 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo
-      - PGDATA=/var/lib/postgresql/data/pgdata  # Cambiado para evitar conflictos
+      - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata  # Cambiado para coincidir con PGDATA
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
     restart: always
+    networks:
+      - odoo-network
+
+  api-gateway:
+    image: runinbk/odoo-mobile-gateway:latest
+    container_name: odoo-mobile-gateway
+    ports:
+      - "3000:3000"
+    volumes:
+      - api-uploads:/usr/src/app/uploads
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - ODOO_URL=http://web:8069
+      - ODOO_DB=odoo
+      - JWT_SECRET=C@1@43_$3cr3t@
+      - OPENAI_API_KEY=Clave_openai
+    restart: always
+    depends_on:
+      - web
     networks:
       - odoo-network
 
 volumes:
   odoo-web-data:
   odoo-db-data:
+  api-uploads:
 
 networks:
   odoo-network:
